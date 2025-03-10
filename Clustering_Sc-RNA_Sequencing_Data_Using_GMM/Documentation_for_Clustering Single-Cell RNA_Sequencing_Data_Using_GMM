@@ -1,0 +1,124 @@
+Clustering Single-Cell RNA Sequencing Data Using Gaussian Mixture Models (GMM)
+
+1. Project Statement
+Single-cell RNA sequencing (scRNA-seq) has revolutionized our understanding of cellular heterogeneity by enabling the profiling of gene expression at the single-cell level. However, analyzing scRNA-seq data is challenging due to its high dimensionality, noise, and the presence of distinct cell subpopulations. Clustering is a critical step in scRNA-seq analysis, as it helps identify distinct cell types or states. Gaussian Mixture Models (GMMs) are a powerful probabilistic clustering method that can model complex data distributions and provide soft assignments of cells to clusters. In this project, we apply GMMs to cluster scRNA-seq data and identify distinct cell populations.
+
+2. Objective
+The objective of this project is to:
+
+Apply Gaussian Mixture Models (GMMs) to cluster single-cell RNA sequencing (scRNA-seq) data.
+
+Identify distinct cell populations (e.g., cell types or states) based on gene expression profiles.
+
+Annotate clusters using known marker genes to assign biological meaning to the identified cell populations.
+
+3. Aim
+The aim of this project is to:
+
+Preprocess scRNA-seq data (normalization, dimensionality reduction).
+
+Cluster the data using GMMs and determine the optimal number of clusters.
+
+Identify marker genes for each cluster.
+
+Annotate clusters based on known cell type markers.
+
+Visualize the results to interpret the biological significance of the clusters.
+
+4. Methodology
+4.1 Data Preprocessing
+Dataset: The PBMC (Peripheral Blood Mononuclear Cells) dataset from 10x Genomics was used, which contains ~2,700 cells and ~27,000 genes.
+
+Normalization: The data was normalized to 10,000 counts per cell to account for differences in sequencing depth.
+
+Log Transformation: The data was log-transformed to stabilize the variance of gene expression.
+
+Highly Variable Genes: Genes with high variability across cells were selected to focus on the most informative genes.
+
+Scaling: The data was scaled to zero mean and unit variance to ensure equal contribution from all genes.
+
+4.2 Dimensionality Reduction
+Principal Component Analysis (PCA): PCA was applied to reduce the dimensionality of the data to 50 principal components, making it computationally efficient for clustering.
+
+4.3 Clustering Using Gaussian Mixture Models (GMMs)
+Model Fitting: A Gaussian Mixture Model (GMM) was fitted to the reduced-dimensional data.
+
+Optimal Number of Clusters: The Bayesian Information Criterion (BIC) was used to determine the optimal number of clusters.
+
+Cluster Assignments: Each cell was assigned to a cluster based on the highest posterior probability.
+
+4.4 Marker Gene Identification
+Wilcoxon Rank-Sum Test: Marker genes for each cluster were identified using the Wilcoxon rank-sum test, which compares gene expression between clusters.
+
+Top Marker Genes: The top 5 marker genes for each cluster were extracted.
+
+4.5 Cluster Annotation
+Known Marker Genes: Clusters were annotated using known marker genes for PBMC cell types (e.g., CD4 for T cells, CD14 for monocytes).
+
+Default Labels: Clusters without matching marker genes were labeled as "Unknown".
+
+4.6 Visualization
+UMAP: Uniform Manifold Approximation and Projection (UMAP) was used to visualize the clusters in 2D space.
+
+Annotated Clusters: The UMAP plot was annotated with cell type labels.
+
+5. Results
+5.1 Clustering Results
+The GMM identified 8 distinct clusters in the PBMC dataset.
+
+The optimal number of clusters was determined using the Bayesian Information Criterion (BIC).
+
+5.2 Marker Genes
+The top marker genes for each cluster were identified. For example:
+
+Cluster 0: NKG7, GZMB, PRF1 (associated with NK cells and cytotoxic T cells).
+
+Cluster 3: HLA-DRB1, HLA-DQA1, HLA-DPB1 (associated with B cells and dendritic cells).
+
+Cluster 4: LST1, FCER1G, AIF1 (associated with monocytes and macrophages).
+
+5.3 Cluster Annotations
+Clusters were annotated based on known marker genes:
+
+Cluster 0: NK cells
+
+Cluster 1: Cytotoxic T cells
+
+Cluster 3: B cells
+
+Cluster 4: Monocytes
+
+Cluster 5: T cells
+
+Cluster 6: B cells
+
+Cluster 7: Monocytes / Dendritic cells
+
+Cluster 2: Mixed population (labeled as "Unknown")
+
+5.4 Visualization
+A UMAP plot was generated to visualize the clusters. Each cluster was color-coded and annotated with its assigned cell type.
+
+6. Conclusion
+The Gaussian Mixture Model (GMM) successfully clustered the PBMC dataset into distinct cell populations.
+
+Marker genes were identified for each cluster, and clusters were annotated using known cell type markers.
+
+The results are consistent with known PBMC cell types, demonstrating the effectiveness of GMMs for scRNA-seq data analysis.
+
+7. Future Work
+Refine Annotations: Use additional marker genes or literature to refine cluster annotations.
+
+Compare with Other Methods: Compare GMM results with other clustering methods (e.g., K-means, hierarchical clustering).
+
+Larger Datasets: Apply GMMs to larger scRNA-seq datasets to test scalability.
+
+Integration with Other Omics Data: Integrate scRNA-seq data with other omics data (e.g., proteomics, epigenomics) for a more comprehensive analysis.
+
+8. References
+Scanpy documentation: https://scanpy.readthedocs.io/
+
+10x Genomics PBMC dataset: https://support.10xgenomics.com/single-cell-gene-expression/datasets
+
+Gaussian Mixture Models: https://scikit-learn.org/stable/modules/mixture.html
+
