@@ -1,0 +1,81 @@
+import numpy as np
+import scanpy as sc
+from sklearn.decomposition import PCA
+from sklearn.mixture import GaussianMixture
+import matplotlib.pyplot as plt
+import umap.umap_ as umap
+
+# Step 1: Load the PBMC dataset (example scRNA-seq data)
+adata = sc.datasets.pbmc3k()
+
+# Step 2: Preprocess the data
+sc.pp.normalize_total(adata, target_sum=1e4)  # Normalize to 10,000 counts per cell
+sc.pp.log1p(adata)  # Log transform the data
+
+# Select highly variable genes
+sc.pp.highly_variable_genes(adata, min_mean=0.0125, max_mean=3, min_disp=0.5)
+adata = adata[:, adata.var.highly_variable]
+
+# Scale the data
+sc.pp.scale(adata, max_value=10)
+
+# Step 3: Dimensionality reduction using PCA
+sc.tl.pca(adata, svd_solver='arpack')
+X_pca = adata.obsm['X_pca']
+
+# Step 4: Fit a Gaussian Mixture Model
+n_components = 8  # Number of clusters (can be determined using BIC or Silhouette Score)
+gmm = GaussianMixture(n_components=n_components, random_state=42)
+clusters = gmm.fit_predict(X_pca)
+
+# Add clusters to the AnnData object
+adata.obs['GMM_clusters'] = clusters.astype(str)  # Ensure clusters are stored as strings
+
+# Step 5: Visualize clusters using UMAP
+sc.pp.neighbors(adata, n_pcs=10)  # Compute neighbors for UMAP
+sc.tl.umap(adata)  # Compute UMAP
+sc.pl.umap(adata, color='GMM_clusters', legend_loc='on data', title='GMM Clusters')
+
+# Step 6: Find marker genes for each cluster
+sc.tl.rank_genes_groups(adata, groupby='GMM_clusters', method='wilcoxon')
+sc.pl.rank_genes_groups(adata, n_genes=20, sharey=False)
+
+# Step 7: Annotate clusters based on marker genes
+# Example: Known marker genes for PBMC cell types
+marker_genes = {
+    'CD4 T cells': ['IL7R', 'CD4'],
+    'CD8 T cells': ['CD8A', 'CD8B'],
+    'B cells': ['CD79A', 'MS4A1'],
+    'Monocytes': ['CD14', 'LYZ'],
+    'NK cells': ['GNLY', 'NKG7'],
+    'Dendritic cells': ['FCER1A', 'CST3'],
+}
+
+# Print top marker genes for each cluster
+print("Top marker genes for each cluster:")
+for cluster in np.unique(adata.obs['GMM_clusters']):  # Use unique clusters from adata.obs
+    print(f"Cluster {cluster}:")
+    top_genes = adata.uns['rank_genes_groups']['names'][cluster].tolist()[:5]  # Top 5 marker genes
+    print(top_genes)
+
+# Step 8: Assign cell type labels based on marker genes
+# Step 8: Assign cell type labels based on marker genes
+cluster_labels = {
+    '0': 'NK cells',
+    '1': 'Cytotoxic T cells',
+    '2': 'Mixed population',
+    '3': 'B cells',
+    '4': 'Monocytes',
+    '5': 'T cells',
+    '6': 'B cells',
+    '7': 'Monocytes / Dendritic cells',
+}
+
+# Add cell type labels to the AnnData object
+adata.obs['cell_type'] = [cluster_labels[cluster] for cluster in adata.obs['GMM_clusters']]
+
+# Step 9: Visualize annotated clusters
+sc.pl.umap(adata, color='cell_type', legend_loc='on data', title='Annotated Cell Types')
+
+# Add cell type labels to the AnnData object
+adata.obs['cell_type'] = [cluster_labels[cluster] for cluster in adata.obs['GMM_clusters']]
