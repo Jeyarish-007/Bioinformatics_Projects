@@ -1,58 +1,58 @@
-# SSR Detection in Aquaporin Genes of Date Palm
+SSR Detection in Aquaporin Genes of Date Palm
 
-## Title
-**In Silico Detection of Simple Sequence Repeats (SSRs) and Single Nucleotide Polymorphisms (SNPs) in Aquaporin Genes of *Phoenix dactylifera* (Date Palm)**
+Title
+In Silico Detection of Simple Sequence Repeats (SSRs) and Single Nucleotide Polymorphisms (SNPs) in Aquaporin Genes of *Phoenix dactylifera* (Date Palm)
 
-## Aim
+Aim
 The aim of this project is to identify **Simple Sequence Repeats (SSRs)** and **Single Nucleotide Polymorphisms (SNPs)** in the aquaporin gene family of *Phoenix dactylifera* (date palm) using bioinformatics tools.
 
-## Objectives
+Objectives
 1. Retrieve DNA sequences of aquaporin genes from the NCBI database.
 2. Detect and analyze **SSRs** in the retrieved sequences using the MISA tool.
 3. Detect and analyze **SNPs** in the retrieved sequences using appropriate tools (to be completed).
 4. Document the results and share the findings on GitHub.
 
-## Methodology
-### Step 1: Sequence Retrieval
+Methodology
+Step 1: Sequence Retrieval
 - DNA sequences of aquaporin genes were retrieved from the **NCBI Gene database** using the search term: `aquaporin AND "Phoenix dactylifera"`.
 - The sequences were downloaded in **FASTA format**.
 
-### Step 2: SSR Detection
+Step 2: SSR Detection
 - The **MISA (Microsatellite Identification Tool)** was used to detect SSRs in the sequences.
 - The following parameters were used:
   - Minimum repeat number: Mononucleotide (10), Dinucleotide (6), Trinucleotide (5), Tetranucleotide (5), Pentanucleotide (5), Hexanucleotide (5).
   - Maximum distance between SSRs for compound SSRs: 100 bases.
 
-### Step 3: Results
+Step 3: Results
 - The SSR regions were identified and summarized in a table.
 - The results are available in the `aquaporin_sequences.fasta.misa` and `aquaporin_sequences.fasta.statistics` files.
 
-## Results
-### SSR Detection
-- A total of **43 aquaporin gene sequences** were analyzed.
-- **120 SSRs** were detected across the sequences.
+Results
+SSR Detection
+- A total of 43 aquaporin gene sequences were analyzed.
+- 120 SSRs were detected across the sequences.
 - The most common SSR types were:
-  - **Mono-nucleotide repeats**: 50
-  - **Di-nucleotide repeats**: 40
-  - **Tri-nucleotide repeats**: 20
+  - Mono-nucleotide repeats: 50
+  - Di-nucleotide repeats: 40
+  - Tri-nucleotide repeats: 20
 
-### Example SSR Results
+Example SSR Results
 | Gene ID       | SSR Type | Start Position | End Position | Length |
 |---------------|----------|----------------|--------------|--------|
 | LOC103722820  | (AC)10   | 100            | 120          | 20     |
 | LOC103717125  | (GAA)5   | 250            | 265          | 15     |
 | ...           | ...      | ...            | ...          | ...    |
 
-## Conclusion
-- SSRs were successfully detected in the aquaporin gene sequences of *Phoenix dactylifera*.
+Conclusion
+- SSRs were successfully detected in the aquaporin gene sequences of Phoenix dactylifera.
 - The results provide valuable insights into the genetic variability of aquaporin genes, which can be used for further studies such as marker-assisted selection or functional analysis.
 
-## Future Work
-- The next step is to detect **SNPs** in the aquaporin gene sequences using tools like **Clustal Omega** or **VarScan**.
+Future Work
+- The next step is to detect SNPs in the aquaporin gene sequences using tools like Clustal Omega or VarScan.
 
 ---
 
-## Files in This Repository
+Files in This Repository
 - `aquaporin_sequences.fasta`: Input FASTA file containing the aquaporin gene sequences.
 - `aquaporin_sequences.fasta.misa`: Output file from MISA containing SSR regions.
 - `aquaporin_sequences.fasta.statistics`: Summary statistics file from MISA.
