@@ -3,7 +3,7 @@ Mutation Visualization in DNA Sequences
 Title:
 Mutation Identification and Visualization in DNA Sequences Using Python
 
-*Aim:
+Aim:
 To detect mutations between two DNA sequences and visualize the differences using a bar chart and sequence alignment representation.
 
 Objective:
