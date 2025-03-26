@@ -1,0 +1,40 @@
+Mutation Visualization in DNA Sequences
+
+Title:
+Mutation Identification and Visualization in DNA Sequences Using Python
+
+*Aim:
+To detect mutations between two DNA sequences and visualize the differences using a bar chart and sequence alignment representation.
+
+Objective:
+- To identify point mutations between two given DNA sequences.
+- To visualize the mutation locations using a bar chart.
+- To highlight mutations in a sequence alignment format.
+
+Methodology:
+1. Data Input: Two DNA sequences (`seq1` and `seq2`) are defined using `Bio.Seq` from Biopython.
+2. Mutation Identification:**
+   - Iterate through both sequences.
+   - Compare each nucleotide at corresponding positions.
+   - Store the index and differing nucleotides in a list.
+3. Visualization 1 - Bar Chart:
+   - Use Matplotlib to plot mutation positions on the x-axis.
+   - Label each mutation with its original and mutated nucleotide.
+4. Visualization 2 - Sequence Alignment:
+   - Align both sequences for comparison.
+   - Highlight mutations in red.
+   - Display a `^` symbol under mismatched bases.
+
+Significance:
+- Helps in understanding genetic variations between two DNA sequences.
+- Useful for bioinformatics applications, including mutation analysis in genetic research.
+- Provides a clear and visual representation of mutation positions.
+
+Result:
+- The bar chart successfully marks mutation positions with labels indicating base changes.
+- The sequence alignment format highlights mismatches clearly, making it easier to identify variations.
+
+Conclusion:
+This script effectively identifies and visualizes mutations in DNA sequences. The combination of a bar chart and sequence alignment provides an intuitive way to analyze genetic variations,
+making it useful for researchers and bioinformatics professionals.
+
