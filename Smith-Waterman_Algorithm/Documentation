@@ -1,0 +1,107 @@
+Smith-Waterman Algorithm for Local Sequence Alignment  
+
+1. Aim 
+The Smith-Waterman algorithm is designed to find the optimal local alignment between two biological sequences (DNA, RNA, or proteins). Unlike global alignment (Needleman-Wunsch), 
+it identifies highly similar subsequences even if the overall sequences are divergent.  
+
+---
+
+2. Objective
+- Compute the best local alignment between two sequences.  
+- Identify conserved regions (e.g., protein domains or gene segments).  
+- Provide a scoring system for matches, mismatches, and gaps.  
+- Serve as a foundation for tools like BLAST and FASTA.  
+
+---
+
+3. Methodology  
+3.1 Algorithm Steps 
+1. Initialization:  
+   - Create a scoring matrix `H` of size `(m+1) × (n+1)` (where `m` and `n` are sequence lengths).  
+   - Initialize the first row and column to `0` (local alignment allows alignment to start anywhere).  
+
+2. Matrix Filling:  
+   For each cell `(i,j)`:  
+   \[
+   H(i,j) = \max \begin{cases} 
+   0 \\ 
+   H(i-1,j-1) + \text{match/mismatch score} \\ 
+   H(i-1,j) - \text{gap penalty} \\ 
+   H(i,j-1) - \text{gap penalty} 
+   \end{cases}
+   \]
+   - Match: `+2` (default)  
+   - Mismatch: `-1` (default)  
+   - Gap penalty: `-1` (default)  
+
+3. Traceback:  
+   - Start from the highest-scoring cell in `H`.  
+   - Move diagonally (match/mismatch), up (gap in sequence 2), or left (gap in sequence 1) until reaching `0`.  
+
+3.2 Example
+Sequences: `"ACCTA"` and `"AGCTA"`  
+Alignment:  
+```
+A C C T A  
+| | . | |  
+A G C T A  
+```
+Score: `7` (`4 matches × 2` – `1 mismatch × 1`).  
+
+---
+
+4. History  
+- Developed in 1981 by Temple F. Smith and Michael S. Waterman.  
+- Improvement over Needleman-Wunsch (1970) by focusing on local similarities.  
+- Foundation for modern bioinformatics tools (BLAST, FASTA).  
+
+---
+
+5. Theory  
+5.1 Key Concepts  
+- Dynamic Programming: Breaks the problem into smaller subproblems.  
+- Local vs Global Alignment:  
+  - Global (Needleman-Wunsch): Aligns entire sequences.  
+  - Local (Smith-Waterman): Finds best-matching regions.  
+- **Scoring Scheme**:  
+  - Match: Positive score (`+2`).  
+  - Mismatch: Negative score (`-1`).  
+  - Gap Penalty: Linear (`-1` per gap) or affine (higher penalty for opening gaps).  
+
+5.2 Time & Space Complexity  
+- Time: `O(mn)` (for sequences of length `m` and `n`).  
+- Space: `O(mn)` (for storing the matrix).  
+
+---
+
+6. Conclusion
+- Strengths:  
+  - Finds optimal local alignments even in divergent sequences.  
+  - Flexible scoring system (adjustable match/mismatch/gap penalties).  
+- Limitations:  
+  - Computationally expensive for long sequences (heuristics like BLAST are faster).  
+  - **Gap penalty choice affects results.  
+
+---
+
+7. Summary
+| Aspect           | Details                                      |
+|------------------|------------                                  |
+| Algorithm Type   | Dynamic Programming                          |
+| Alignment Type   | Local                                        |
+| Scoring          | Match: `+2`, Mismatch: `-1`, Gap: `-1`       |
+| Complexity       | Time: `O(mn)`, Space: `O(mn)`                |
+| Applications     | Gene finding, protein domain analysis, BLAST |
+
+---
+
+8. References  
+- Smith, T. F., & Waterman, M. S. (1981). ["Identification of Common Molecular Subsequences"](https://doi.org/10.1016/0022-2836(81)90087-5). Journal of Molecular Biology.  
+- BioPython (for optimized implementations).  
+
+---
+
+Final Notes 
+- The provided Python code implements the core logic.  
+- For large sequences, use heuristic methods (BLAST).  
+- Affine gap penalties can improve biological relevance.  
