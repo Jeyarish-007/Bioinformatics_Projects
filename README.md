@@ -31,6 +31,8 @@ Various projects of bioinformatics
 
 [Project 14: Protein Structure Visualizer](https://github.com/Jeyarish-007/Bioinformatics_Projects/blob/main/protein_str_visualization.ipynb)
 
+[Project 15: Flow Cytometry Data Analysis Using Non-Negative Matrix Factorization (NMF)](https://github.com/Jeyarish-007/Bioinformatics_Projects/tree/main/Flow%20Cytometry%20Data%20Analysis%20Using%20Non-Negative%20Matrix%20Factorization%20(NMF))
+
 
 # 1. FASTA Conversion Tool  
 
@@ -586,6 +588,81 @@ Visualize PDB files.
 
 - Drug design
 - Structural biology
+
+# 15.  Flow Cytometry Data Analysis Using Non-Negative Matrix Factorization (NMF)
+
+[Project 15: Flow Cytometry Data Analysis Using Non-Negative Matrix Factorization (NMF)](https://github.com/Jeyarish-007/Bioinformatics_Projects/tree/main/Flow%20Cytometry%20Data%20Analysis%20Using%20Non-Negative%20Matrix%20Factorization%20(NMF))
+
+## Overview
+
+This project implements an unsupervised machine learning approach using Non-Negative Matrix Factorization (NMF) to identify biologically meaningful subpopulations in high-dimensional flow cytometry data. The workflow includes preprocessing, dimensionality reduction via PCA, clustering with NMF, and visualization of marker contributions and cell populations.
+
+## Features
+
+- FCS File Support : Load and preprocess raw flow cytometry data using FlowCal.
+- Data Normalization : Apply min-max scaling for improved NMF performance.
+- PCA-Based Component Selection : Determine optimal number of components by retaining 95% variance.
+- NMF Clustering : Decompose data into interpretable basis (W) and coefficient (H) matrices.
+
+## Visualization Tools :
+
+- Heatmap of marker contributions per component
+- t-SNE projection of clustered cells
+- Biological Interpretation : Identify dominant markers and link them to known cell types or artifacts.
+  
+## Usage
+
+Clone the repository:
+```bash
+git clone https://github.com/yourusername/flow-cytometry-nmf.git 
+cd flow-cytometry-nmf
+```
+Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+Run the Jupyter notebook:
+```bash
+jupyter notebook NMF_Flow_Cytometry_Analysis.ipynb
+```
+
+Follow the steps inside the notebook:
+Load FCS file
+Preprocess and normalize data
+Perform PCA for component selection
+Apply NMF clustering
+Visualize results with heatmap and t-SNE
+Interpret findings
+
+## Implementation Details
+
+### Data Loading & Preprocessing
+- Use FlowCal.io.FCSData() to load .fcs files
+- Convert to pandas DataFrame and apply min-max normalization
+### Dimensionality Reduction
+- Apply PCA to determine optimal number of NMF components (retain 95% variance)
+### NMF Clustering
+- Use sklearn.decomposition.NMF to decompose data into:
+- W: Cell-cluster association matrix
+- H: Marker contribution matrix
+### Visualization
+- Plot heatmap of H matrix to show marker contributions
+- Use t-SNE for 2D visualization of clusters
+### Interpretation
+- Analyze dominant markers per component
+- Relate clusters to biological cell types or experimental artifacts
+
+## Software & Libraries
+- Python 3.10+
+- FlowCal – for reading FCS files
+- scikit-learn – for PCA, NMF, and t-SNE
+- pandas, numpy – for data manipulation
+- matplotlib, seaborn – for visualization
+- jupyter – for interactive analysis
+- Recommended Hardware
+- At least 8GB RAM (for datasets with ~500k cells)
+- 16GB+ RAM recommended for faster processing
 
 ## Dependencies
 
