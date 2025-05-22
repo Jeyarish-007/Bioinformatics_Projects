@@ -33,6 +33,8 @@ Various projects of bioinformatics
 
 [Project 15: Flow Cytometry Data Analysis Using Non-Negative Matrix Factorization (NMF)](https://github.com/Jeyarish-007/Bioinformatics_Projects/tree/main/Flow%20Cytometry%20Data%20Analysis%20Using%20Non-Negative%20Matrix%20Factorization%20(NMF))
 
+[Project 16: Gene Analysis Using Upset Plot: Techniques, Metastasis Frequency and Sample Size](https://github.com/Jeyarish-007/Bioinformatics_Projects/tree/main/Data_Visualization_Techniques/Gene_Analysis_Using_Upset_Plot)
+
 
 # 1. FASTA Conversion Tool  
 
@@ -669,3 +671,57 @@ Interpret findings
 - Python 3, Biopython
 - NGLView, py3Dmol
 - Jupyter Notebook
+
+# 16) Gene Analysis Using Upset Plot: Techniques, Metastasis Frequency and Sample Size
+
+[Project 16: Gene Analysis Using Upset Plot: Techniques, Metastasis Frequency and Sample Size](https://github.com/Jeyarish-007/Bioinformatics_Projects/tree/main/Data_Visualization_Techniques/Gene_Analysis_Using_Upset_Plot)
+
+To visualize and analyze relationships between gene sequencing techniques (NGS, WGS, WES) and their association with metastasis frequency in cancer-related genes using UpSet plots.
+
+## Overview
+This project provides a comprehensive analysis of:
+- Distribution of sequencing techniques across 20 cancer-related genes
+- Correlation between technique combinations and metastasis frequency
+- Sample size distribution across different technique combinations
+- Visualization of complex set relationships using UpSet plots
+
+## Features
+- **Interactive Visualization**: Combines intersection matrix, bar charts, and strip plots
+- **Multi-dimensional Analysis**: Simultaneously visualizes technique combinations, metastasis frequency, and sample sizes
+- **Customizable Output**: Adjustable plot parameters and styling
+- **Supplementary Statistics**: Automated technique counting and gene-technique mapping
+
+## Usage
+```python
+# Basic usage:
+from upsetplot import UpSet
+upset = UpSet(data, show_counts=True)
+upset.add_catplot(value='Metric', kind='strip')
+upset.plot()
+```
+
+## Dependencies
+
+### Core Packages
+| Package     | Minimum Version | Purpose                  |
+|-------------|-----------------|--------------------------|
+| pandas      | ≥1.0            | Data manipulation        |
+| matplotlib  | ≥3.0            | Base plotting framework  |
+| upsetplot   | ≥0.6            | UpSet visualization      |
+
+### Optional Packages
+| Package    | Recommended For                 |
+|------------|----------------------------------|
+| seaborn    | Enhanced plot styling           |
+| jupyter    | Interactive notebook exploration|
+| numpy      | Numerical operations            |
+| scipy      | Advanced statistical functions  |
+
+### Installation
+```bash
+# Install core packages
+pip install pandas matplotlib upsetplot
+
+# Install optional packages
+pip install seaborn jupyter numpy scipy
+```
