@@ -35,6 +35,8 @@ Various projects of bioinformatics
 
 [Project 16: Gene Analysis Using Upset Plot: Techniques, Metastasis Frequency and Sample Size](https://github.com/Jeyarish-007/Bioinformatics_Projects/tree/main/Data_Visualization_Techniques/Gene_Analysis_Using_Upset_Plot)
 
+[Project 17: Automated Generation of Case Record Forms for Retrospective Clinical Data Analysis](https://github.com/Jeyarish-007/Bioinformatics_Projects/tree/main/Automated%20Generation%20of%20Case%20Record%20Forms%20for%20Retrospective%20Clinical%20Data%20Analysis)
+
 
 # 1. FASTA Conversion Tool  
 
@@ -724,4 +726,77 @@ pip install pandas matplotlib upsetplot
 
 # Install optional packages
 pip install seaborn jupyter numpy scipy
+```
+
+# 17) Automated Generation of Case Record Forms for Retrospective Clinical Data Analysis
+
+[Project 17: Automated Generation of Case Record Forms for Retrospective Clinical Data Analysis](https://github.com/Jeyarish-007/Bioinformatics_Projects/tree/main/Automated%20Generation%20of%20Case%20Record%20Forms%20for%20Retrospective%20Clinical%20Data%20Analysis)
+
+
+To streamline retrospective clinical research documentation by automating the generation of standardized Case Report Forms (CRFs) from patient data stored in Excel, using an open-source Python workflow.
+
+## Overview
+
+This project automates the process of transcribing retrospective patient data into formatted Case Report Forms (CRFs) for clinical analysis. By leveraging Python, `pandas`, and `python-docx`, users can efficiently convert a spreadsheet containing multiple patient records into a single, professional Word document, with each CRF neatly formatted, titled, and ready for analysis or archiving. The approach reduces manual effort, ensures uniformity, and can be easily adapted for similar projects in clinical or research settings.
+
+## Features
+
+- **Automated Document Generation:**  
+  Converts an entire Excel sheet of patient records into a Word document with one CRF per page.
+- **Customizable CRF Table:**  
+  Each page includes a standardized, bordered table with defined clinical fields.
+- **Centered and Styled Title:**  
+  Every CRF page starts with a centered "Case Report Form" header.
+- **Consistent Spacing:**  
+  Five blank lines are inserted between the title and the CRF table, improving readability.
+- **Date Formatting:**  
+  Dates are shown in `dd-mm-yyyy` format, with no time component.
+- **Error Handling:**  
+  Handles missing or non-standard data gracefully.
+- **Easy Adaptation:**  
+  The script can be tailored for different fields or templates as needed.
+
+## Usage
+
+1. **Prepare your data:**  
+   - Enter each patient record as a row in Excel with columns: Case No, Age, Gender, Diagnosis, Relapse, Date of sample collection.
+
+2. **Clone or download this repository.**
+
+3. **Install the required packages:**
+    ```sh
+    pip install pandas openpyxl python-docx
+    ```
+
+4. **Edit file paths** in the script to point to your Excel data and specify the desired output Word file location.
+
+5. **Run the script:**
+    ```sh
+    Scripts.py
+    ```
+
+6. **Open the generated `.docx` file** to view a compiled set of CRFs—each patient’s data formatted on its own page.
+
+## Implementation Details
+
+- The script reads patient data from an Excel file using `pandas`.
+- It iterates through each row (representing a patient), creating a new page in the Word document starting with a centered "Case Report Form" heading.
+- Five blank lines are inserted for visual spacing.
+- A 6x2 table is generated for each patient, populated with the appropriate fields.
+- Table borders are added using low-level XML manipulation for a professional look.
+- The `"Date of sample collection"` field is formatted as `dd-mm-yyyy`, omitting any time data.
+- Each record starts on a new page (`add_page_break`).
+- The final Word document contains one CRF per patient, compiled into a single file.
+
+## Dependencies
+
+- **Python 3.7+**
+- [pandas](https://pandas.pydata.org/)  
+- [openpyxl](https://openpyxl.readthedocs.io/en/stable/) (for Excel reading support)
+- [python-docx](https://python-docx.readthedocs.io/en/latest/) (for Word document generation)
+
+To install dependencies:
+
+```sh
+pip install pandas openpyxl python-docx
 ```
