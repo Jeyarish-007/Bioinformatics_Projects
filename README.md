@@ -37,6 +37,8 @@ Various projects of bioinformatics
 
 [Project 17: Automated Generation of Case Record Forms for Retrospective Clinical Data Analysis](https://github.com/Jeyarish-007/Bioinformatics_Projects/tree/main/Automated%20Generation%20of%20Case%20Record%20Forms%20for%20Retrospective%20Clinical%20Data%20Analysis)
 
+[Project 18: Whole Exome Sequencing (WES) Variant Calling Pipeline](https://github.com/Jeyarish-007/Bioinformatics_Projects/tree/main/Whole%20Exome%20Sequencing%20(WES)%20Variant%20Calling%20Pipeline)
+
 
 # 1. FASTA Conversion Tool  
 
@@ -800,3 +802,65 @@ To install dependencies:
 ```sh
 pip install pandas openpyxl python-docx
 ```
+
+# 18) Whole Exome Sequencing (WES) Variant Calling Pipeline
+
+[Project 18: Whole Exome Sequencing (WES) Variant Calling Pipeline](https://github.com/Jeyarish-007/Bioinformatics_Projects/tree/main/Whole%20Exome%20Sequencing%20(WES)%20Variant%20Calling%20Pipeline)
+
+To provide a reproducible, modular, and step-by-step computational workflow for processing Whole Exome Sequencing (WES) data — from raw FASTQ files to biologically meaningful annotated variant results.
+
+## Overview
+This pipeline processes raw paired-end WES data through essential bioinformatics stages including quality control, trimming, alignment, duplicate removal, recalibration, variant calling, filtering, and annotation.  
+Each step is implemented as an **individual script** to allow modular execution, tracking, and troubleshooting.
+
+**Workflow Summary:**
+1. Quality control of raw reads  
+2. Adapter and quality trimming  
+3. Alignment to reference genome  
+4. Sorting alignments  
+5. Duplicate marking  
+6. BAM indexing  
+7. Base quality score recalibration (BQSR)  
+8. Variant calling  
+9. Variant filtering  
+10. Variant annotation  
+
+## Features
+- Modular 10-script design for flexibility
+- Compatible with HPC (LSF job scheduling)
+- Works with human WES datasets
+- Uses well-established tools (FastQC, BWA, Picard, GATK, ANNOVAR/VEP)
+- Step-by-step documentation with matching notes
+- Easily extendable to other variant callers or annotation tools
+
+## Usage
+1. Ensure all required dependencies are installed and available in your environment.
+2. Place your input FASTQ files in the designated input directory.
+3. Modify the variables in each script to match your:
+   - Input FASTQ file names
+   - Reference genome path
+   - Output directory path
+4. Run each script in order:
+5. Review outputs after each step before proceeding.
+
+## Implementation Details
+
+- **Data Input:** Paired-end FASTQ files from Illumina sequencing
+- **Reference Genome:** hg38 or hg19 (FASTA + index files)
+- **Aligner:** BWA-MEM for mapping reads  
+- **Processing:** Picard tools for sorting and marking duplicates
+- **Recalibration:** GATK BaseRecalibrator and ApplyBQSR  
+- **Variant Calling:** GATK HaplotypeCaller in gVCF mode 
+- **Filtering:** Hard filters based on variant quality metrics 
+- **Annotation:** VEP or ANNOVAR for functional annotation   
+
+## Dependencies
+
+- **FastQC** – Quality control of raw reads  
+- **fastp** / **Trimmomatic** – Adapter and quality trimming  
+- **BWA** – Read alignment to reference genome  
+- **SAMtools** – BAM indexing and basic operations  
+- **Picard** – Sorting and marking duplicates  
+- **GATK** – BQSR, variant calling, filtering
+- **ANNOVAR** / **Ensembl VEP** – Variant annotation
+- **Perl/Python** – Required for annotation tools
