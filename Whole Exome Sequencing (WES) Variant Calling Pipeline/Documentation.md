@@ -1,6 +1,5 @@
 # Whole Exome Sequencing (WES) Variant Calling Pipeline
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)  
 *An automated pipeline for WES data preprocessing, alignment, and variant calling using GATK best practices.*
 
 ---
