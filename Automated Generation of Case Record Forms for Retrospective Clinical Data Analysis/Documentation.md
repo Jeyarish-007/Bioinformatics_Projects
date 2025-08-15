@@ -117,10 +117,6 @@ This repository is made available under the MIT License—see [LICENSE](LICENSE)
 
 If you use this workflow or code for your research or clinical project, please credit or link back to this repository.
 
-## Contact
-
-*For questions or contributions, please reach out via [GitHub Issues](https://github.com/YOUR-USERNAME/YOUR-REPO/issues) or submit a pull request.*
-
 ## Sample Output
 
 **Sample Case Report Form:**
