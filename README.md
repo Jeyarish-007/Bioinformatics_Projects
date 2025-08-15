@@ -3,7 +3,7 @@ Various projects of bioinformatics
 
 ## Projects:
 
-[Project 1: FASTA Conversion tool](https://github.com/Jeyarish-007/Bioinformatics_Projects/blob/main/FASTA_conversion.ipynb)
+[Project 1: FASTA Conversion tool](#FASTA-Conversion-tool)
 
 [Project 2: Simple SNP Finder](https://github.com/Jeyarish-007/Bioinformatics_Projects/blob/main/Simple_SNP_finder.ipynb)
 
