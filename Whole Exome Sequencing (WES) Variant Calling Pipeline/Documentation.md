@@ -122,7 +122,7 @@ gatk MarkDuplicates --INPUT sorted.bam --OUTPUT dedup.bam --METRICS_FILE metrics
 **Tool:** `GATK SplitNCigarReads`  
 **Purpose:** Split reads into exons and remove introns (intended for RNA-Seq).
 
-> ⚠️ **Note:** This step is included for **reproducibility** with the original lab protocol, though it is **not standard for WES**.
+> ⚠️ **Note:** This step is **not standard for WES**.
 
 ```bash
 gatk SplitNCigarReads -R ref.fa -I dedup.bam -O split.bam
@@ -203,7 +203,7 @@ gatk HaplotypeCaller \
 
 ## Conclusion
 
-The pipeline successfully processes WES data from raw FASTQ to final variant calls. Despite the inclusion of `SplitNCigarReads` (an RNA-Seq step), the workflow remains robust and produces a high-quality VCF. For future projects, this step can be omitted for WES, but its inclusion ensures **exact reproducibility** with the original lab protocol.
+The pipeline successfully processes WES data from raw FASTQ to final variant calls. Despite the inclusion of `SplitNCigarReads` (an RNA-Seq step), the workflow remains robust and produces a high-quality VCF. For future projects, this step can be omitted for WES.
 
 This pipeline is now **ready for use on additional samples** and serves as a template for standardized WES analysis.
 
