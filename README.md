@@ -39,6 +39,7 @@ Various projects of bioinformatics
 
 [Project 18: Whole Exome Sequencing (WES) Variant Calling Pipeline](https://github.com/Jeyarish-007/Bioinformatics_Projects/tree/main/Whole%20Exome%20Sequencing%20(WES)%20Variant%20Calling%20Pipeline)
 
+[Project 19: PubChem CID Extractor & SDF Downloader](https://github.com/Jeyarish-007/Bioinformatics_Projects/tree/main/pubchem-cid-extractor)
 
 # 1. FASTA Conversion Tool  
 
@@ -864,3 +865,81 @@ Each step is implemented as an **individual script** to allow modular execution,
 - **GATK** – BQSR, variant calling, filtering
 - **ANNOVAR** / **Ensembl VEP** – Variant annotation
 - **Perl/Python** – Required for annotation tools
+
+# 19) PubChem CID Extractor & SDF Downloader
+
+[Project 19: PubChem CID Extractor & SDF Downloader](https://github.com/Jeyarish-007/Bioinformatics_Projects/tree/main/pubchem-cid-extractor)
+
+To provide an automated, scalable, and user-friendly pipeline for extracting PubChem Compound IDs (CIDs) from compound names and downloading corresponding 3D SDF structure files for cheminformatics and bioinformatics research.
+
+## Overview
+The project integrates PubChem PUG REST API with Python scripts to enrich compound datasets.
+It allows researchers to:
+- Map compound names to PubChem CIDs.
+- Download 3D molecular structures.
+- Generate enriched datasets with hyperlinks and descriptive filenames.
+This workflow is particularly suited for natural product research, molecular docking, QSAR modeling, and drug discovery pipelines.  
+
+## Introduction
+
+Chemical compound annotation and structure retrieval are critical in **computational chemistry** and ***bioinformatics**.
+Manual retrieval of PubChem CIDs and 3D structures is time-consuming and prone to error.
+
+This pipeline automates the process by:
+- Querying PubChem with compound names.
+- Extracting corresponding CIDs.
+- Downloading 3D conformer files in SDF format.
+- Creating enriched datasets with clickable PubChem links.
+It ensures data integrity, reproducibility, and ease of integration with downstream analyses.
+
+## Features
+- Automated CID extraction from compound names.
+- Bulk 3D SDF download with retry and logging for failed cases.
+- Descriptive filenames (`CompoundName_IMPPATID_CID.sdf`) for traceability.
+- Excel-friendly hyperlinks for direct PubChem access.
+- Modular scripts for different use cases:
+  - CID extraction
+  - SDF downloads
+  - Link-only datasets
+- Handles `.xlsx` and `.csv` input formats.
+
+## Usage
+```bash
+# Extract CIDs from compound names
+python src/extract_cid.py --input data/example_input.xlsx --output data/imppat_enriched.csv
+
+# Download SDF files from CIDs
+python src/download_sdf.py --input data/imppat_enriched.csv --output outputs/sdf_files/
+
+# Quick download from clean CIDs only
+python src/quick_download.py --input data/example_input.xlsx --output outputs/sdf_files/
+
+# Enriched dataset with filenames and links
+python src/enriched_links.py --input data/example_input.xlsx --output data/with_links.csv
+
+# Generate Excel with hyperlinks only (no downloads)
+python src/hyperlink_generator.py --input data/example_input.xlsx --output data/links.xlsx
+```
+
+## Implementation Details
+
+- **Language**: `Python 3.8+`
+
+- **Workflow**:
+  - Input dataset loaded with Pandas.
+  - API calls made to PubChem PUG REST API via requests.
+  - Results parsed, validated, and added to DataFrame.
+  - Optional: SDF files downloaded in batch with retry mechanism.
+  - Outputs saved as CSV/Excel and SDF structure files.
+- **Error Handling**:
+  - Invalid CIDs skipped.
+  - Failed downloads logged in outputs/logs/failed_downloads.txt.
+  - Duplicate downloads avoided by checking existing files.
+
+## Dependencies
+
+Core **`Python`** libraries required:
+- **pandas** → for data handling (Excel/CSV).
+- **requests** → for PubChem API calls.
+- **openpyxl** → for Excel file support.
+- **os, re, time** → standard library modules.
