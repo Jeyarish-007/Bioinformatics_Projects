@@ -271,7 +271,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 If you use this pipeline in your research, please cite:
 
 > Jeyarish V *Whole Exome Sequencing Variant Calling Pipeline*. GitHub Repository, 2025.  
-> https://github.com/Jeyarish-007/wes-pipeline
+> https://github.com/Jeyarish-007/Bioinformatics_Projects/tree/main/Whole%20Exome%20Sequencing%20(WES)%20Variant%20Calling%20Pipeline
 
 Also cite the tools used:
 - **GATK**: Van der Auwera et al., *Curr Protoc Bioinformatics*, 2013.
