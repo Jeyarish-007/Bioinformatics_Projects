@@ -41,6 +41,8 @@ Various projects of bioinformatics
 
 [Project 19: PubChem CID Extractor & SDF Downloader](https://github.com/Jeyarish-007/Bioinformatics_Projects/tree/main/pubchem-cid-extractor)
 
+[Project 20: Clinical Follow-Up Mapper](https://github.com/Jeyarish-007/Bioinformatics_Projects/tree/main/clinical-followup-mapper)
+
 # 1. FASTA Conversion Tool  
 
 [Project 1: FASTA Conversion tool](https://github.com/Jeyarish-007/Bioinformatics_Projects/blob/main/FASTA_conversion.ipynb)
@@ -943,3 +945,135 @@ Core **`Python`** libraries required:
 - **requests** → for PubChem API calls.
 - **openpyxl** → for Excel file support.
 - **os, re, time** → standard library modules.
+
+# 20) Clinical Follow-Up Mapper
+
+[Project 20: Clinical Follow-Up Mapper](https://github.com/Jeyarish-007/Bioinformatics_Projects/tree/main/clinical-followup-mapper)
+
+To automate the harmonization of longitudinal patient follow-up records by organizing follow-up visits into configurable month intervals while preserving Excel formatting and generating quality-control reports for invalid or inconsistent dates.
+
+## Overview
+
+Clinical Follow-Up Mapper is a Streamlit-based application designed to assist researchers and clinical data managers in organizing patient follow-up records from Excel spreadsheets.
+
+The application automatically:
+
+* Detects baseline and follow-up dates.
+* Calculates follow-up duration relative to baseline.
+* Maps follow-up visits into predefined month intervals.
+* Preserves original spreadsheet formatting.
+* Generates quality-control reports for problematic records.
+* Produces downloadable Excel outputs for downstream analysis.
+
+The tool is particularly useful for longitudinal clinical studies, patient registries, translational research projects, and follow-up data management workflows.
+
+## Introduction
+
+Longitudinal clinical studies often involve repeated patient visits over extended periods. Organizing these follow-up records into standardized intervals is essential for data harmonization, cohort tracking, and downstream statistical analyses.
+
+Manual categorization of follow-up visits is labor-intensive and prone to inconsistencies, especially when dealing with large datasets containing missing, malformed, or conflicting dates.
+
+Clinical Follow-Up Mapper automates this process by:
+
+* Reading patient records from Excel files.
+* Validating baseline and follow-up dates.
+* Calculating follow-up duration in months.
+* Assigning follow-up visits to interval-specific columns.
+* Reporting problematic records for manual review.
+* Preserving original spreadsheet styling and formatting.
+
+The application provides a user-friendly web interface built with Streamlit and requires no programming knowledge for routine use.
+
+## Features
+
+* Automated baseline and follow-up date detection.
+* Dynamic follow-up interval generation.
+* Configurable month-based follow-up grouping.
+* Robust date validation and error handling.
+* Preservation of Excel formatting and cell styles.
+* Automatic quality-control reporting.
+* Downloadable processed Excel output.
+* User-friendly Streamlit web interface.
+* No patient records are discarded due to invalid dates.
+* Supports Microsoft Excel (`.xlsx` and `.xls`) files.
+
+## Usage
+
+```bash
+# Install dependencies
+pip install -r requirements.txt
+
+# Launch the application
+streamlit run app.py
+```
+
+Workflow:
+
+1. Upload an Excel file containing patient records.
+2. Allow the application to validate and process dates.
+3. Review any identified quality-control issues.
+4. Download the processed Excel workbook.
+
+## Implementation Details
+
+* **Language:** `Python 3.8+`
+
+* **Workflow:**
+
+  * Load patient records from Excel files using Pandas and OpenPyXL.
+  * Automatically identify baseline and follow-up date columns.
+  * Validate dates and detect inconsistencies.
+  * Calculate follow-up duration using dateutil relativedelta.
+  * Generate dynamic month-interval columns.
+  * Assign follow-up visits to appropriate intervals.
+  * Preserve original spreadsheet formatting and styles.
+  * Export a processed Excel workbook for download.
+
+* **Error Handling:**
+
+  * Invalid baseline dates are flagged but retained.
+  * Invalid follow-up dates are reported separately.
+  * Follow-up dates preceding baseline dates are identified.
+  * Processing continues even when problematic records are detected.
+  * Quality-control reports are generated for manual review.
+
+## Dependencies
+
+Core **`Python`** libraries required:
+
+* **streamlit** → Interactive web application framework.
+* **pandas** → Data manipulation and spreadsheet processing.
+* **openpyxl** → Excel workbook reading, writing, and style preservation.
+* **python-dateutil** → Follow-up interval calculations.
+* **datetime** → Date handling and validation.
+* **io** → In-memory file generation for downloads.
+* **copy** → Excel style replication.
+
+## Applications
+
+* Clinical oncology studies.
+* Prospective cohort studies.
+* Patient registry management.
+* Longitudinal biomarker research.
+* Translational research projects.
+* Clinical trial follow-up tracking.
+* Biobanking and follow-up data harmonization.
+
+## Input
+
+Microsoft Excel files (`.xlsx`, `.xls`) containing:
+
+* Lab ID
+* Baseline Date
+* Case Number
+* Patient Information
+* Follow-Up Dates
+
+## Output
+
+Processed Excel workbook containing:
+
+* Original patient information.
+* Follow-up dates grouped into month intervals.
+* Preserved formatting and styling.
+* Quality-control reports for problematic records.
