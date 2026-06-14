@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+
+.streamlit/
+
+*.xlsx
+*.xls
+
+.DS_Store
+Thumbs.db
